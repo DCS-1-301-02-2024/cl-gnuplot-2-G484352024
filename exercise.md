@@ -27,6 +27,15 @@
 ```gnuplot {cmd=true output="html"}
 set terminal svg
 
+set xrange [0:7]
+set yrange [-20:15]
+plot 2*x**2*sqrt(x)-5*x**2 w l title "f1(x)", x/log(x) w l title "f2(x)"
+set title "関数のプロット"
+set grid
+set xlabel "x"
+set ylabel "y"
+replot
+
 ```
 
 ## 3. 八王子の気温
@@ -47,6 +56,13 @@ set terminal svg
 set xdata time
 set timefmt '%Y/%m/%d'
 set xtics format "%m/%d"
+set title "八王子の気温(過去1年間)"
+set xlabel "日付"
+set ylabel "温度"
+set grid
+set yrange [-10:40]
+set datafile separator comma
+plot "weather2024.csv" using 1:2 with lines title "最高気温", "weather2024.csv" using 1:3 with lines title "最高気温(平年)", "weather2024.csv" using 1:4 with lines title "最低気温",　"weather2024.csv" using 1:5 with lines title "最低気温（平年）"
 
 ```
 
